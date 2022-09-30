@@ -32,7 +32,8 @@ const CryptoDetails = () => {
       timePeriod,
     });
   const cryptoDetails = data?.data?.coin;
-  console.log(cryptoDetails);
+  // console.log(cryptoDetails);
+  console.log(coinHistory);
 
   if (isLoading) return "Loading....";
 
