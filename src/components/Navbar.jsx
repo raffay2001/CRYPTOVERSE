@@ -38,6 +38,7 @@ const Navbar = () => {
         </Typography.Title>
         <Button
           className="menu-control-container"
+          style={{padding: "1px 15px"}}
           onClick={() => setActiveMenu((prevState) => !prevState)}
         >
           <MenuOutlined />
