@@ -7,8 +7,11 @@ import { useGetCryptosQuery } from "../services/cryptoApi";
 const { Title } = Typography;
 
 const Homepage = () => {
-  const { data, isFetching } = useGetCryptosQuery();
-  console.log(data);
+  const { data, error, isLoading } = useGetCryptosQuery();
+  const gloabalStats = data?.data?.stats;
+  // console.log(data.data.stats);
+
+  if (isLoading) return "Loading....";
 
   return (
     <>
@@ -17,19 +20,19 @@ const Homepage = () => {
       </Title>
       <Row>
         <Col span={12}>
-          <Statistic title="Total Cyptocurrencies" value="5" />
+          <Statistic title="Total Cyptocurrencies" value={gloabalStats.total} />
         </Col>
         <Col span={12}>
-          <Statistic title="Total Exchanges" value="5" />
+          <Statistic title="Total Exchanges" value={millify(gloabalStats.totalExchanges)} />
         </Col>{" "}
         <Col span={12}>
-          <Statistic title="Total Market Cap" value="5" />
+          <Statistic title="Total Market Cap" value={millify(gloabalStats.totalMarketCap)} />
         </Col>{" "}
         <Col span={12}>
-          <Statistic title="Total 24h Volume" value="5" />
+          <Statistic title="Total 24h Volume" value={millify(gloabalStats.total24hVolume)} />
         </Col>{" "}
         <Col span={12}>
-          <Statistic title="Total Markets" value="5" />
+          <Statistic title="Total Markets" value={millify(gloabalStats.totalMarkets)} />
         </Col>{" "}
       </Row>
     </>
